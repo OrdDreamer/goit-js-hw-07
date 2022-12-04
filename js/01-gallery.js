@@ -17,7 +17,7 @@ function getGalleryItemElementMarkup(
           </div>`;
 }
 
-function handleGalleryItemClick(event) {
+function handleGalleryClick(event) {
   event.preventDefault();
 
   if (event.target.nodeName !== "IMG") {
@@ -62,5 +62,5 @@ if (galleryElement) {
 
   galleryElement.insertAdjacentHTML("afterbegin", galleryItemElements);
 
-  galleryElement.addEventListener("click", handleGalleryItemClick);
+  galleryElement.addEventListener("click", handleGalleryClick);
 }

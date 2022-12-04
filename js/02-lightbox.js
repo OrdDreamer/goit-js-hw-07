@@ -1,4 +1,32 @@
-import { galleryItems } from './gallery-items.js';
-// Change code below this line
+import { galleryItems } from "./gallery-items.js";
 
-console.log(galleryItems);
+
+function getGalleryItemElementMarkup(
+  previewImageURL,
+  originalImageURL,
+  description
+) {
+  return `<a href="${originalImageURL}" class="gallery__item" rel="nofollow">
+            <img class="gallery__image" src="${previewImageURL}" alt="${description}" />
+          </a>`;
+}
+
+const galleryElement = document.querySelector("ul.gallery");
+
+if (galleryElement) {
+  const galleryItemElements = galleryItems
+    .map((item) =>
+      getGalleryItemElementMarkup(item.preview, item.original, item.description)
+    )
+    .join("");
+
+  galleryElement.insertAdjacentHTML("afterbegin", galleryItemElements);
+}
+
+const lightbox = new SimpleLightbox(
+  ".gallery a",
+  {
+    captionsData: "alt",
+    captionDelay: 250,
+  }
+);
